@@ -21,3 +21,7 @@ ha-proxy configuration is available in haproxy.cfg in the root of this directory
 **3. Start the docker containers using docker compose**
 
 `docker-compose up -d`
+
+**4. Hit apis via ha-proxy load balancer on port 80**
+
+`curl localhost/api/hello`
