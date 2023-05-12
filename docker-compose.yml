@@ -1,0 +1,40 @@
+version: '3'
+services:
+  app1:
+    build: .
+    environment:
+      - INSTANCE_ID=1
+    networks:
+      - backend
+    expose:
+      - 8080
+
+  app2:
+    build: .
+    environment:
+      - INSTANCE_ID=2
+    networks:
+      - backend
+    expose:
+      - 8080
+
+  app3:
+    build: .
+    environment:
+      - INSTANCE_ID=3
+    networks:
+      - backend
+    expose:
+      - 8080
+
+  haproxy:
+    image: haproxy:2.4
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    networks:
+      - backend
+    ports:
+      - 80:80
+
+networks:
+  backend:
